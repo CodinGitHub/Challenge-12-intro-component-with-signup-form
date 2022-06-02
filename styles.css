@@ -7,29 +7,142 @@
 :root{
     --Red: hsl(0, 100%, 74%) ;
     --Green: hsl(154, 59%, 51%);
+    --Green-Shadow: hsl(154, 59%, 42%);
     --Blue: hsl(248, 32%, 49%);
+    --Blue-Shadow: hsla(248, 32%, 49%, 0.50);
     --Dark-Blue: hsl(249, 10%, 26%);
     --Grayish-Blue: hsl(246, 25%, 77%);
+    --White: #fff;
 }
 body{
     font-family: 'Poppins', sans-serif;
+    color: var(--White);
     background-color: var(--Red);
     background-image: url(./images/bg-intro-mobile.png);
 }
 .main-container{
-    margin: 96px auto;
-    border: 1px solid red;
+    margin: 96px auto 40px;
     width: 330px;
 }
 h1{
-    /* border: 1px solid black; */
-    margin-top: -14px;
+    width: 235px;
+    margin: -14px auto 16px;
+    font-size: 1.7em;
+    line-height: 38px;
+}
+.description{
     text-align: center;
+    margin: 0 10px 68px;
+}
+.offer{
+    background-color: var(--Blue);
+    width: 330px;
+    height: 90px;
+    padding: 22px 75px;
+    text-align: center;
+    border-radius: 10px;
+    font-weight: 400;
+    box-shadow: 0 6px 0 var(--Blue-Shadow);
+    margin-bottom: 20px;
+}
+.offer span{
+    font-weight: 700;
+}
+.form-container{
+    background-color: var(--White);
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 6px 0 var(--Blue-Shadow);
+}
+input{
+    width: 100%;
+    height: 55px;
+    margin-bottom: 18px;
+    border-radius: 4px;
+    border: 1px solid var(--Grayish-Blue);
+    padding-left: 20px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+}
+input[type="submit"]{
+    background-color: var(--Green);
+    color: var(--White);
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 400;
+    border: none;
+    box-shadow: 0 3px 0 var(--Green-Shadow);
+}
+input[type="submit"]:hover{
+    cursor: pointer;
+}
+
+.error{
+    color: var(--Red);
+    font-style: italic;
+    margin: -12px 0 18px;
+    text-align: right;
+    font-size: 12px;
+}
+.firstName-container,
+.lastName-container,
+.email-container,
+.pass-container{
+    position: relative;
+}
+.icon-error{
+    position: absolute;
+    right: 10px;
+    top: 12px;
+}
+.terms{
+    color: var(--Grayish-Blue);
+    font-size: 0.70em;
+    margin: 0 14px;
+    text-align: center;
+}
+.terms a{
+    text-decoration: none;
+    color: var(--Red);
+    font-weight: 700;
 }
 .attribution { 
     font-size: 11px; 
     text-align: center; 
+    margin-bottom: 30px;
 }
 .attribution a { 
     color: hsl(228, 45%, 44%); 
+}
+/*----------------------Desktop---------------------------*/
+@media (min-width:1120px){
+    .main-container{
+        display: flex;
+        width: 1114px;
+    }
+    section{
+        border: 1px solid red;
+    }
+    section:nth-child(1){
+        padding-top: 200px;
+        width: 570px;
+    }
+    section:nth-child(2){
+        width: 540px;
+    }
+    h1{
+        margin-left: 0;
+        font-size: 3em;
+        width: 414px;
+        line-height: 55px;
+        margin-bottom: 30px;
+    }
+    .description{
+        text-align: left;
+    }
+    .offer{
+        width: 100%;
+        height: 60px;
+    }
 }
