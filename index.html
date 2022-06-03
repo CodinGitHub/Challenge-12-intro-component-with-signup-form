@@ -21,29 +21,21 @@
       <div class="form-container">
         <form action="">
 
-          <div class="firstName-container">
-            <input id="firstName" type="text" placeholder="First Name">
+          
+          <input id="firstName" type="text" placeholder="First Name">
+          <div id="firstNameError" class="error-container">
             <!-- <img class="icon-error" src="./images/icon-error.svg" alt="">
             <p class="error">First Name cannot be empty</p> -->
           </div>
 
-          <div class="lastName-container">
-            <input id="lastName" type="text" placeholder="Last Name">
-            <!-- <img class="icon-error" src="./images/icon-error.svg" alt="">
-            <p class="error">Last Name cannot be empty</p> -->
-          </div>
+          <input id="lastName" type="text" placeholder="Last Name">
+          <div id="lastNameError" class="error-container"></div>
 
-          <div class="email-container">
-            <input id="emailAddress" type="email" placeholder="Email Address">
-            <img class="icon-error" src="./images/icon-error.svg" alt="">
-            <p class="error">Looks like this is not an email</p>
-          </div>
+          <input id="emailAddress" type="email" placeholder="Email Address">
+          <div id="emailAddressError" class="error-container"></div>
 
-          <div class="pass-container">
-            <input id="password" type="password" placeholder="Password">
-            <img class="icon-error" src="./images/icon-error.svg" alt="">
-            <p class="error">Password cannot be empty</p>
-          </div>
+          <input id="password" type="password" placeholder="Password">
+          <div id="passError" class="error-container"></div>
 
           <input id="button" type="submit" value="Claim your free trial ">
 

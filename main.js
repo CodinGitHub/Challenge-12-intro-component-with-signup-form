@@ -1,48 +1,35 @@
-const firstNameElement = document.getElementById('firstName');
-const lastNameElement = document.getElementById('lastName');
-const emailElement = document.getElementById('emailAddress');
-const passElement = document.getElementById('password');
-
-const firstNameContainer = document.querySelector('.firstName-container');
-const lastNameContainer = document.querySelector('.lastName-container');
-const emailContainer = document.getElementsByClassName('email-container');
-const passNameContainer = document.getElementsByClassName('pass-container');
-
-console.log(firstNameContainer)
-
 button.addEventListener('click', (event)=>{
     event.preventDefault();
-    validateEmpty(firstNameElement.value, firstNameElement, firstNameContainer, 'First Name');
-    validateEmpty(lastNameElement.value, lastNameElement, lastNameContainer, 'Last Name');
-    validateEmail(emailElement.value, emailElement);
-    validatePassword(passElement.value, passElement);
+    validateEmpty(firstName.value, firstName, firstNameError, 'First Name');
+    validateEmpty(lastName.value, lastName, lastNameError, 'Last Name');
+    validateEmail(emailAddress.value, emailAddress);
+    validateEmpty(password.value, password, passError, 'Password');
 });
 
-function validateEmpty(value, div, container, nameInput){
+function validateEmpty(value, input, divError, nameInput){
     if (value.length == 0){    
-        div.style.border = ' 1px solid red' 
-        container.innerHTML += '';
-        container.innerHTML += `<img class="icon-error" src="./images/icon-error.svg" alt="">
-                      <p class="error">${nameInput} cannot be empty</p>`
+        showError(`${nameInput} cannot be empty`, divError, input)
     }else{
-        div.style.border = ' 1px solid hsl(246, 25%, 77%)'
+        hideError(divError, input);
     }
 }
 
 function validateEmail(email, div){
     let regExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
     if(regExp.test(email)){
-        div.style.border = ' 1px solid hsl(246, 25%, 77%)'
+        hideError(emailAddressError, div);
     }else{
-        div.style.border = ' 1px solid red'
+        showError('Looks like this is not an email', emailAddressError, div)
     }
 }
 
-function validatePassword(pass, div){
-    let regExp = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/g;
-    if(regExp.test(pass)){
-        div.style.border = ' 1px solid hsl(246, 25%, 77%)'
-    }else{
-        div.style.border = ' 1px solid red'
-    }
+function showError(error, div, input){
+    input.style.border = ' 1px solid red';
+    div.innerHTML = `<img class="icon-error" src="./images/icon-error.svg" alt="">
+    <p class="error">${error}</p>`;
+}
+
+function hideError(div, input){
+    div.innerHTML = '';
+    input.style.border = ' 1px solid hsl(246, 25%, 77%)'
 }
