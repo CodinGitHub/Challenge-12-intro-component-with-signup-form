@@ -1,3 +1,10 @@
+const firstName = document.querySelector('#firstNameInput');
+const lastName = document.querySelector('#lastNameInput');
+const emailAddress = document.querySelector('#emailInput');
+const password = document.querySelector('#passInput');
+
+const button = document.querySelector('#button');
+
 button.addEventListener('click', (event)=>{
     event.preventDefault();
     validateEmpty(firstName.value, firstName, firstNameError, 'First Name');
@@ -6,30 +13,30 @@ button.addEventListener('click', (event)=>{
     validateEmpty(password.value, password, passError, 'Password');
 });
 
-function validateEmpty(value, input, divError, nameInput){
-    if (value.length == 0){    
-        showError(`${nameInput} cannot be empty`, divError, input)
+function validateEmpty(valueInput, divInput, divError, nameInput){
+    if (valueInput.length == 0){    
+        showError(`${nameInput} cannot be empty`, divError, divInput)
     }else{
-        hideError(divError, input);
+        hideError(divError, divInput);
     }
 }
 
-function validateEmail(email, div){
+function validateEmail(email, divInput){
     let regExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
     if(regExp.test(email)){
-        hideError(emailAddressError, div);
+        hideError(emailAddressError, divInput);
     }else{
-        showError('Looks like this is not an email', emailAddressError, div)
+        showError('Looks like this is not an email', emailAddressError, divInput)
     }
 }
 
-function showError(error, div, input){
-    input.style.border = ' 1px solid red';
-    div.innerHTML = `<img class="icon-error" src="./images/icon-error.svg" alt="">
+function showError(error, divError, divInput){
+    divInput.style.border = ' 1px solid red';
+    divError.innerHTML = `<img class="icon-error" src="./images/icon-error.svg" alt="">
     <p class="error">${error}</p>`;
 }
 
-function hideError(div, input){
-    div.innerHTML = '';
-    input.style.border = ' 1px solid hsl(246, 25%, 77%)'
+function hideError(divError, divInput){
+    divError.innerHTML = '';
+    divInput.style.border = ' 1px solid hsl(246, 25%, 77%)'
 }
